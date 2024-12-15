@@ -55,4 +55,21 @@ FROM STATION
 WHERE  CITY NOT REGEXP '[aeiouAEIOU]$'
 AND CITY NOT REGEXP '^[aeiouAEIOU]';
 
-7. 
+7. Query the Name of any student in STUDENTS who scored higher than 75. Order your output by the last three characters of each name.
+If two or more students both have names ending in the same last three characters (i.e.: Bobby, Robby, etc.), secondary sort them by 
+ascending ID.
+
+
+SOLUTION:
+
+SELECT Name
+FROM STUDENTS
+WHERE Marks >75
+ORDER BY RIGHT(name, 3), id;
+
+
+NOTE: Pay close attention to the question, as more difficult challenges often require new functions to solve the problem.
+      In this challenge, we used the RIGHT() function to extract the last three characters from the Name column. The sorting 
+      process was done in two steps:
+      1. Primary sort: We sorted the names based on the last three characters extracted using RIGHT(Name, 3).
+      2. Secondary sort: If multiple names had the same last three characters, we sorted them by ID in ascending order.
