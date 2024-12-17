@@ -60,7 +60,7 @@ If two or more students both have names ending in the same last three characters
 ascending ID.
 
 
-SOLUTION:
+SOLUTION
 
 SELECT Name
 FROM STUDENTS
@@ -73,3 +73,84 @@ NOTE: Pay close attention to the question, as more difficult challenges often re
       process was done in two steps:
       1. Primary sort: We sorted the names based on the last three characters extracted using RIGHT(Name, 3).
       2. Secondary sort: If multiple names had the same last three characters, we sorted them by ID in ascending order.
+
+8. Write a query that prints a list of employee names (i.e.: the name attribute) from the Employee table in alphabetical order.
+
+SOLUTION
+
+SELECT name
+FROM Employee
+ORDER BY name ASC;
+
+9. Write a query that prints a list of employee names (i.e.: the name attribute) for employees in Employee having a salary 
+   greater than $2000 per month who have been employees for less than 10 months. Sort your result by ascending employee_id.
+
+SOLUTION
+
+SELECT name
+FROM Employee
+WHERE salary > 2000
+AND months <10
+ORDER BY employee_id ASC;
+
+NOTE: This exercise was a bit challenging the first time I selected the columns I used the asterisk(*) symbol 
+      assuming that for me to filter the name with columns I have to include all columns. However, The SQL 
+      engine processes the WHERE clause before the SELECT clause, which is why it “knows” about all the columns.
+
+10. Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than 137.2345
+    Truncate your answer to 4 decimal places.
+
+SOLUTION
+
+SELECT ROUND(LAT_N,4)
+FROM STATION
+WHERE LAT_N <137.2345
+ORDER BY LAT_N DESC
+LIMIT 1;
+
+11. Query the Western Longitude (LONG_W) for the largest Northern Latitude (LAT_N) in STATION that is 
+less than 137.2345. Round your answer to 4 decimal places.
+
+SOLUTION
+
+SELECT ROUND(LONG_W, 4)
+FROM STATION
+WHERE LAT_N <137.2345
+ORDER BY LAT_N DESC 
+LIMIT 1;
+
+
+12. Query the smallest Northern Latitude (LAT_N) from STATION that is greater 
+    than 38.7780. Round your answer to  decimal  4 places.
+
+SOLUTION
+
+SELECT ROUND(LAT_N,4)
+FROM STATION
+WHERE LAT_N >38.7780
+ORDER BY LAT_N ASC
+LIMIT 1;
+
+
+13. Query the Western Longitude (LONG_W)where the smallest Northern Latitude (LAT_N) in STATION 
+    is greater than. Round your answer to  decimal places. 
+
+SOLUTION 
+
+SELECT ROUND(LONG_W,4)
+FROM STATION
+WHERE LAT_N >38.7780
+ORDER BY LAT_N ASC
+LIMIT 1 ;
+
+
+14. 
+
+
+
+
+
+
+
+
+
