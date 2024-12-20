@@ -143,10 +143,92 @@ WHERE LAT_N >38.7780
 ORDER BY LAT_N ASC
 LIMIT 1 ;
 
+14.Query a count of the number of cities in CITY having a Population larger than 1 000 000
 
-14. 
+SOLUTION:
+
+SELECT COUNT(ID)
+FROM CITY
+WHERE POPULATION >100000;
 
 
+15.Query the total population of all cities in CITY where District is California.
+
+SOLUTION:
+
+SELECT SUM(POPULATION)
+FROM CITY
+WHERE DISTRICT = 'California';
+
+
+
+16. Query the average population of all cities in CITY where District is California
+
+SOLUTION:
+
+SELECT AVG(POPULATION)
+FROM CITY
+WHERE DISTRICT='California'
+
+
+17. Query the average population for all cities in CITY, rounded down to the nearest integer.
+
+SOLUTION:
+
+SELECT ROUND(AVG(POPULATION),0)
+FROM CITY
+
+
+18. Query the sum of the populations for all Japanese cities in CITY. The COUNTRYCODE for Japan is JPN.
+
+SOLUTION:
+
+SELECT SUM(POPULATION)
+FROM CITY
+WHERE COUNTRYCODE = 'JPN'
+
+19. Query the difference between the maximum and minimum populations in CITY.
+
+
+SOLUTION:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+30. Write a query identifying the type of each record in the TRIANGLES table using its three side lengths. 
+      Output one of the following statements for each record in the table:Equilateral: It's a triangle with sides of 
+      equal length. Isosceles: It's a triangle with sides of equal length. Scalene: It's a triangle with sides of differing 
+      lengths. Not A Triangle: The given values of A, B, and C don't form a triangle.
+SOLUTION:
+
+SELECT
+CASE WHEN A+B <= C OR A+C <= B OR B+C <= A  THEN 'Not A Triangle'
+WHEN (A=B AND B!=C) OR (A=C AND C!=B) OR (B=C AND C!=A) THEN 'Isosceles'
+WHEN (A=B AND B=C) THEN 'Equilateral'
+ELSE 'Scalene'
+END
+FROM TRIANGLES
 
 
 
