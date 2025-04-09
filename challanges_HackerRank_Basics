@@ -193,6 +193,34 @@ WHERE COUNTRYCODE = 'JPN'
 SOLUTION:
 
 
+20. Pivot the Occupation column in OCCUPATIONS 
+
+so that each Name is sorted alphabetically 
+
+and displayed underneath its corresponding 
+Occupation. 
+
+The output should consist of four columns (Doctor, Professor, Singer, and Actor) in that specific order, 
+
+with their respective names listed alphabetically under each column.
+
+Note: Print NULL when there are no more names corresponding to an occupation.
+
+SELECT Name, Occupation,
+COUNT(CASE WHEN Occupation = "Doctor" THEN "" END) AS Doctor,
+COUNT(CASE WHEN Occupation = "Professor" THEN "" END) AS Professor,
+COUNT(CASE WHEN Occupation = "Singer" THEN "" END) AS Singer,
+COUNT(CASE WHEN Occupation = "Actor" THEN "" END) AS Actor
+FROM OCCUPATIONS
+GROUP BY Name, Occupation
+ORDER BY Name, Occupation ASC;
+
+
+(ITS NOT DONE BUT CONTINUE FROM HERE ON AFTER)
+
+
+
+
 
 
 
