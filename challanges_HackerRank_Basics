@@ -186,81 +186,40 @@ SOLUTION:
 SELECT SUM(POPULATION)
 FROM CITY
 WHERE COUNTRYCODE = 'JPN'
-
-19. Query the difference between the maximum and minimum populations in CITY.
-
-
-SOLUTION:
+_______________________________________________________________________________________________________________
 
 
-20. Pivot the Occupation column in OCCUPATIONS 
-
-so that each Name is sorted alphabetically 
-
-and displayed underneath its corresponding 
-Occupation. 
-
-The output should consist of four columns (Doctor, Professor, Singer, and Actor) in that specific order, 
-
-with their respective names listed alphabetically under each column.
+19.  Pivot the Occupation column in OCCUPATIONS  so that each Name is sorted alphabetically and displayed underneath its corresponding 
+Occupation. The output should consist of four columns (Doctor, Professor, Singer, and Actor) in that specific order, with their respective 
+names listed alphabetically under each column.
 
 Note: Print NULL when there are no more names corresponding to an occupation.
 
-SELECT Name, Occupation,
-COUNT(CASE WHEN Occupation = "Doctor" THEN "" END) AS Doctor,
-COUNT(CASE WHEN Occupation = "Professor" THEN "" END) AS Professor,
-COUNT(CASE WHEN Occupation = "Singer" THEN "" END) AS Singer,
-COUNT(CASE WHEN Occupation = "Actor" THEN "" END) AS Actor
-FROM OCCUPATIONS
-GROUP BY Name, Occupation
-ORDER BY Name, Occupation ASC;
 
-
-(ITS NOT DONE BUT CONTINUE FROM HERE ON AFTER)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-30. Write a query identifying the type of each record in the TRIANGLES table using its three side lengths. 
-      Output one of the following statements for each record in the table:Equilateral: It's a triangle with sides of 
-      equal length. Isosceles: It's a triangle with sides of equal length. Scalene: It's a triangle with sides of differing 
-      lengths. Not A Triangle: The given values of A, B, and C don't form a triangle.
-SOLUTION:
-
+SOLUTION : 
+_______________________________________________________________________________________________________________
 SELECT
-CASE WHEN A+B <= C OR A+C <= B OR B+C <= A  THEN 'Not A Triangle'
-WHEN (A=B AND B!=C) OR (A=C AND C!=B) OR (B=C AND C!=A) THEN 'Isosceles'
-WHEN (A=B AND B=C) THEN 'Equilateral'
-ELSE 'Scalene'
-END
-FROM TRIANGLES
+  MAX(CASE WHEN Occupation = 'Doctor' THEN Name END) AS Doctor,
+  MAX(CASE WHEN Occupation = 'Professor' THEN Name END) AS Professor,
+  MAX(CASE WHEN Occupation = 'Singer' THEN Name END) AS Singer,
+  MAX(CASE WHEN Occupation = 'Actor' THEN Name END) AS Actor
+FROM (
+  SELECT Name, Occupation,
+         ROW_NUMBER() OVER (PARTITION BY Occupation ORDER BY Name) AS rn
+  FROM OCCUPATIONS
+) AS ordered
+GROUP BY rn
+ORDER BY rn;
+----------------------------
+Explanation of the challenge :
 
 
+----------------------------
+Thoughts: 
 
+It is excellent that I already have the solution  to the challenge but honestly, I did not understand everything so far. For that reason
+I am asking CHatgpt to give me less difficult challenges to understand the solution properly. When I would understand it I will write my 
+understanding in the explanation sector.
 
-
-
+________________________
 
